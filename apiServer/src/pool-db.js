@@ -1,13 +1,23 @@
 const { Client, Pool } = require("pg");
+require("dotenv").config();
+
+const USER = process.env["USUARIO_RACO_BD"];
+
+const checkEnvVar = (name) => {
+  if (process.env[name] === undefined) {
+    throw new Error(`Undefined env. variable ${name}!!!`);
+  }
+  return process.env[name];
+};
 
 const poolConnection = new Pool({
-  user: "fullstack",
-  host: "localhost",
-  database: "racoEstudiantdb",
-  password: "ailatan",
-  port: "5432",
+  user: checkEnvVar("USUARIO_BD"),
+  host: checkEnvVar("HOST_DB"),
+  database: checkEnvVar("DATABASE"),
+  password: checkEnvVar("PWD_BD"),
+  PORT_DB: checkEnvVar("PORT_DB"),
 });
 
-poolConnection.connect();
+// poolConnection.connect();
 
 module.exports = poolConnection;
