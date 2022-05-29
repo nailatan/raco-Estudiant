@@ -1,0 +1,27 @@
+{
+  "name": "apiserver",
+  "version": "1.0.0",
+  "description": "API server for student's corner",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "start-windows": "SET NODE_ENV=development & nodemon server.js",
+    "dev1": "NODE_ENV=development nodemon servers.js",
+    "dev": "nodemon ./src/server.js"
+  },
+  "keywords": [
+    "API.",
+    "student"
+  ],
+  "author": "Natalia Aguado <naguado@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
