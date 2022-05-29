@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: raco-db-container
+    image: postgres   #imagen
+    ports: 
+      - 5432:5432 #el guion indica que es una lista
+    environment:
+      - POSTGRES_DB
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    volumes:
+      - ./sql:/sql

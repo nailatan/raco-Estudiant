@@ -1,0 +1,1 @@
+docker exec -it raco-db-container psql  -U fullstack  racoEstudiantdb -f $1 
