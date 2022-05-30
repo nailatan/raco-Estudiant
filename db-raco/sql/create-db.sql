@@ -128,11 +128,11 @@ CREATE TABLE IF NOT EXISTS diary (
 CREATE TABLE IF NOT EXISTS events (
     idEvent INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     idDiary INTEGER REFERENCES diary(idDiary),
-    name VARCHAR(100) NOT NULL UNIQUE,
+    name VARCHAR(100) NOT NULL,
     description VARCHAR(500),
     startDate TIMESTAMP NOT NULL,
-    endDate TIMESTAMP NOT NULL,
-    idTypeEvent INTEGER REFERENCES eventType(idEventType)
+    endDate TIMESTAMP NOT NULL--,
+    --idTypeEvent INTEGER REFERENCES eventType(idEventType)
 );
 
 CREATE TABLE IF NOT EXISTS attendance (
