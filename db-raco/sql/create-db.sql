@@ -4,6 +4,9 @@ DROP TABLE IF EXISTS examMark;
 DROP TABLE IF EXISTS exam;
 DROP TABLE IF EXISTS schedule;
 DROP TABLE IF EXISTS attendance;
+DROP TABLE IF EXISTS events;
+DROP TABLE IF EXISTS diary;
+DROP TABLE IF EXISTS eventType;
 DROP TABLE IF EXISTS class;
 DROP TABLE IF EXISTS academicCourse;
 DROP TABLE IF EXISTS academicYear;
@@ -107,6 +110,29 @@ CREATE TABLE IF NOT EXISTS class (
     name VARCHAR(100) NOT NULL UNIQUE,
     idAcademicCourse INTEGER REFERENCES academicCourse(idAcademicCourse),
     idTutor INTEGER REFERENCES teacher(idTeacher)
+);
+
+CREATE TABLE IF NOT EXISTS eventType (
+    idEventType INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE,
+    description VARCHAR(500),
+    colour varchar(20)
+);
+
+CREATE TABLE IF NOT EXISTS diary (
+    idDiary INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    --idClass INTEGER REFERENCES class(idClass),
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS events (
+    idEvent INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    idDiary INTEGER REFERENCES diary(idDiary),
+    name VARCHAR(100) NOT NULL UNIQUE,
+    description VARCHAR(500),
+    startDate TIMESTAMP NOT NULL,
+    endDate TIMESTAMP NOT NULL,
+    idTypeEvent INTEGER REFERENCES eventType(idEventType)
 );
 
 CREATE TABLE IF NOT EXISTS attendance (

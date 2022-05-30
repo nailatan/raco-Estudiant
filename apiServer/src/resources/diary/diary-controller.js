@@ -1,34 +1,71 @@
 const express = require("express");
+const {
+  findAllDiaries,
+  findOneDiary,
+  createOneDiary,
+  updateOneDiary,
+  deleteOneDiary,
+} = require("./diary-db");
 
-const getAllDiaries = (req, res) => {
+const getAllDiaries = async (req, res) => {
   try {
-    res.status(200).json({ result: "Aqui los diarios", error: [] });
+    const list = await findAllDiaries();
+    res.status(200).json({ result: list, error: [] });
   } catch (e) {
     console.error(`[ERROR] Diary.Controller.getAllDiaries error: ${e}`);
+    res.status(500).json({ result: [], error: `Cannot get all diaries` });
   }
 };
 
-const createOneDiary = (req, res) => {
+const getDiary = async (req, res) => {
+  const idDiary = req.params.idDiary;
   try {
-    res.status(200).json({ result: "Aqui el diario creado", error: [] });
+    const infoDiary = await findOneDiary(idDiary);
+    res.status(200).json({
+      result: infoDiary,
+      error: [],
+    });
+  } catch (e) {
+    console.error(`[ERROR] Diary.Controller.getDiary error: ${e}`);
+    res.status(500).json({ result: [], error: `Cannot get diary ${idDiary}` });
+  }
+};
+
+const createDiary = async (req, res) => {
+  const dataDiary = req.body;
+  try {
+    const diaryCreated = await createOneDiary(dataDiary);
+    res.status(200).json({ result: diaryCreated, error: [] });
   } catch (e) {
     console.error(`[ERROR] Diary.Controller.createOneDiary error: ${e}`);
+    res.status(500).json({ result: [], error: `Cannot create diary` });
   }
 };
 
-const updateOneDiary = (req, res) => {
+const updateDiary = async (req, res) => {
+  const idDiary = req.params.idDiary;
+  const dataDiary = req.body;
   try {
-    res.status(200).json({ result: "Aqui el diario modificado", error: [] });
+    const diaryUpdated = await updateOneDiary(idDiary, dataDiary);
+    res.status(200).json({ result: diaryUpdated, error: [] });
   } catch (e) {
     console.error(`[ERROR] Diary.Controller.updateOneDiary error: ${e}`);
+    res
+      .status(500)
+      .json({ result: [], error: `Cannot update diary ${idDiary}` });
   }
 };
 
-const deleteOneDiary = (req, res) => {
+const deleteDiary = async (req, res) => {
+  const idDiary = req.params.idDiary;
   try {
-    res.status(200).json({ result: "Aqui el diario eliminado", error: [] });
+    const diaryDeleted = await deleteOneDiary(idDiary);
+    res.status(200).json({ result: diaryDeleted, error: [] });
   } catch (e) {
     console.error(`[ERROR] Diary.Controller.deleteOneDiary error: ${e}`);
+    res
+      .status(500)
+      .json({ result: [], error: `Cannot delete diary  ${idDiary}` });
   }
 };
 
@@ -40,6 +77,10 @@ const getAllEventsFromDiary = (req, res) => {
       .json({ result: `Aqui los eventos del diary ${idDiary}`, error: [] });
   } catch (e) {
     console.error(`[ERROR] Diary.Controller.getAllDiaries error: ${e}`);
+    res.status(500).json({
+      result: [],
+      error: `Cannot get all events from diary  ${idDiary}`,
+    });
   }
 };
 
@@ -51,6 +92,10 @@ const createDiaryEvent = (req, res) => {
       .json({ result: `Nuevo evento del diario  ${idDiary}`, error: [] });
   } catch (e) {
     console.error(`[ERROR] Diary.Controller.createDiaryEvent error: ${e}`);
+    res.status(500).json({
+      result: [],
+      error: `Cannot create an event in diary ${idDiary}`,
+    });
   }
 };
 
@@ -64,6 +109,10 @@ const updateDiaryEvent = (req, res) => {
     });
   } catch (e) {
     console.error(`[ERROR] Diary.Controller.updateDiaryEvent error: ${e}`);
+    res.status(500).json({
+      result: [],
+      error: `Cannot update event ${idEvent} from diary  ${idDiary}`,
+    });
   }
 };
 
@@ -77,6 +126,10 @@ const deleteDiaryEvent = (req, res) => {
     });
   } catch (e) {
     console.error(`[ERROR] Diary.Controller.deleteDiaryEvent error: ${e}`);
+    res.status(500).json({
+      result: [],
+      error: `Cannot delete diary events from diary ${idDiary}`,
+    });
   }
 };
 
@@ -90,26 +143,18 @@ const getDiaryEvent = (req, res) => {
     });
   } catch (e) {
     console.error(`[ERROR] Diary.Controller.getDiaryEvent error: ${e}`);
-  }
-};
-
-const getDiary = (req, res) => {
-  const idDiary = req.params.idDiary;
-  try {
-    res.status(200).json({
-      result: `Datos del diario  ${idDiary}`,
-      error: [],
+    res.status(500).json({
+      result: [],
+      error: `Cannot get diary events  from diary ${idDiary}`,
     });
-  } catch (e) {
-    console.error(`[ERROR] Diary.Controller.getDiary error: ${e}`);
   }
 };
 
 module.exports = {
   getAllDiaries,
-  createOneDiary,
-  updateOneDiary,
-  deleteOneDiary,
+  createDiary,
+  updateDiary,
+  deleteDiary,
   getDiary,
   getAllEventsFromDiary,
   createDiaryEvent,

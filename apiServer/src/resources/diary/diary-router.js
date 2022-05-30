@@ -1,9 +1,9 @@
 const express = require("express");
 const {
   getAllDiaries,
-  createOneDiary,
-  updateOneDiary,
-  deleteOneDiary,
+  createDiary,
+  updateDiary,
+  deleteDiary,
   getAllEventsFromDiary,
   createDiaryEvent,
   updateDiaryEvent,
@@ -15,9 +15,9 @@ const {
 const diaryRouter = express.Router();
 
 diaryRouter.get("/", getAllDiaries);
-diaryRouter.put("/", createOneDiary);
-diaryRouter.post("/:idDiary", updateOneDiary);
-diaryRouter.delete("/:idDiary", deleteOneDiary);
+diaryRouter.put("/", createDiary);
+diaryRouter.post("/:idDiary", updateDiary);
+diaryRouter.delete("/:idDiary", deleteDiary);
 diaryRouter.get("/:idDiary", getDiary);
 
 diaryRouter.get("/:idDiary/events", getAllEventsFromDiary);
