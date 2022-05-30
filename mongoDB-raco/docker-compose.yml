@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  raco-mongo:
+    container_name: raco-mongo-db
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: fullstack
+      MONGO_INITDB_ROOT_PASSWORD: fullstack
+    ports:
+      - 27017:27017
+    volumes:
+      - data:/data/db
+volumes:
+  data:
