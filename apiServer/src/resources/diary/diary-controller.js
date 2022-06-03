@@ -30,7 +30,7 @@ const getDiary = async (req, res) => {
     const infoDiary = await findOneDiary(idDiary);
     if (infoDiary != null) {
       res.status(200).json({
-        result: infoDiary,
+        result: [infoDiary],
         error: [],
       });
     } else {
@@ -49,7 +49,7 @@ const createDiary = async (req, res) => {
   const dataDiary = req.body;
   try {
     const diaryCreated = await createOneDiary(dataDiary);
-    res.status(200).json({ result: diaryCreated, error: [] });
+    res.status(200).json({ result: [diaryCreated], error: [] });
   } catch (e) {
     console.error(`[ERROR] Diary.Controller.createOneDiary error: ${e}`);
     res.status(500).json({ result: [], error: `Cannot create diary` });
@@ -62,7 +62,7 @@ const updateDiary = async (req, res) => {
   try {
     const diaryUpdated = await updateOneDiary(idDiary, dataDiary);
     if (diaryUpdated != null) {
-      res.status(200).json({ result: diaryUpdated, error: [] });
+      res.status(200).json({ result: [diaryUpdated], error: [] });
     } else {
       res.status(404).json({
         result: [],
@@ -82,7 +82,7 @@ const deleteDiary = async (req, res) => {
   try {
     const diaryDeleted = await deleteOneDiary(idDiary);
     if (diaryDeleted != null) {
-      res.status(200).json({ result: diaryDeleted, error: [] });
+      res.status(200).json({ result: [diaryDeleted], error: [] });
     } else {
       res.status(404).json({
         result: [],
@@ -118,7 +118,7 @@ const createDiaryEvent = async (req, res) => {
   console.log(`${req.params.idDiary}`);
   try {
     const eventCreated = await createOneEvent(idDiary, eventData);
-    res.status(200).json({ result: eventCreated, error: [] });
+    res.status(200).json({ result: [eventCreated], error: [] });
   } catch (e) {
     console.error(`[ERROR] Diary.Controller.createDiaryEvent error: ${e}`);
     res.status(500).json({
@@ -136,7 +136,7 @@ const updateDiaryEvent = async (req, res) => {
     const eventModified = await updateOneEvent(idEvent, dataEvent);
     if (eventModified != null) {
       res.status(200).json({
-        result: eventModified,
+        result: [eventModified],
         error: [],
       });
     } else {

@@ -28,7 +28,7 @@ const createStudent = async (req, res) => {
       delete student.idperson;
 
       res.status(201).json({
-        result: student,
+        result: [student],
         error: "",
       });
     } else {
@@ -49,7 +49,7 @@ const getOneStudent = async (req, res) => {
     const student = await dbStudent.findOneStudent(id);
     if (student != null) {
       res.status(200).json({
-        result: student,
+        result: [student],
         error: "",
       });
     } else {
@@ -76,7 +76,7 @@ const deleteStudent = async (req, res) => {
       delete student.idperson;
 
       res.status(200).json({
-        result: student,
+        result: [student],
         error: "",
       });
     } else {
@@ -104,13 +104,13 @@ const updateStudent = async (req, res) => {
       delete student.idperson;
 
       res.status(200).json({
-        result: student,
+        result: [student],
         error: "",
       });
     } else {
       res
         .status(404)
-        .json({ result: {}, error: `Cannot find student with id ${id}` });
+        .json({ result: [], error: `Cannot find student with id ${id}` });
     }
   } catch (e) {
     console.error(`[ERROR] Student.Controller.updateStudent error: ${e}`);

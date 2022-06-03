@@ -4,8 +4,9 @@ const diarySchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      maxlength: 100,
-      required: true,
+      maxlength: [100, "Name is too long"],
+      required: [true, "Name is required"],
+      unique: true,
       immutable: false,
     },
   },
