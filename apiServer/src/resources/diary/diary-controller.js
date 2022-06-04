@@ -14,17 +14,16 @@ const {
   deleteOneEvents,
 } = require("../event/event-db");
 
-const getAllDiaries = async (req, res) => {
+const getAllDiaries = async (req, res, next) => {
   try {
     const list = await findAllDiaries();
     res.status(200).json({ result: list, error: [] });
   } catch (e) {
-    console.error(`[ERROR] Diary.Controller.getAllEvents error: ${e}`);
-    res.status(500).json({ result: [], error: `Cannot get all diaries` });
+    next(e);
   }
 };
 
-const getDiary = async (req, res) => {
+const getDiary = async (req, res, next) => {
   const idDiary = req.params.idDiary;
   try {
     const infoDiary = await findOneDiary(idDiary);
@@ -34,29 +33,29 @@ const getDiary = async (req, res) => {
         error: [],
       });
     } else {
-      res.status(404).json({
-        result: [],
-        error: [`Cannot find diary  with id ${idDiary}`],
-      });
+      throw {
+        message: `Cannot find diary  with id ${idDiary}`,
+        code: "404",
+      };
     }
   } catch (e) {
-    console.error(`[ERROR] Diary.Controller.getDiary error: ${e}`);
-    res.status(500).json({ result: [], error: `Cannot get diary ${idDiary}` });
+    e.entity = "diary";
+    next(e);
   }
 };
 
-const createDiary = async (req, res) => {
+const createDiary = async (req, res, next) => {
   const dataDiary = req.body;
   try {
     const diaryCreated = await createOneDiary(dataDiary);
     res.status(200).json({ result: [diaryCreated], error: [] });
   } catch (e) {
-    console.error(`[ERROR] Diary.Controller.createOneDiary error: ${e}`);
-    res.status(500).json({ result: [], error: `Cannot create diary` });
+    e.entity = "diary";
+    next(e);
   }
 };
 
-const updateDiary = async (req, res) => {
+const updateDiary = async (req, res, next) => {
   const idDiary = req.params.idDiary;
   const dataDiary = req.body;
   try {
@@ -64,40 +63,37 @@ const updateDiary = async (req, res) => {
     if (diaryUpdated != null) {
       res.status(200).json({ result: [diaryUpdated], error: [] });
     } else {
-      res.status(404).json({
-        result: [],
-        error: [`Cannot find diary  with id ${idDiary}`],
-      });
+      throw {
+        code: 404,
+        entity: "diary",
+        message: `Cannot find diary  with id ${idDiary}`,
+      };
     }
   } catch (e) {
-    console.error(`[ERROR] Diary.Controller.updateOneDiary error: ${e}`);
-    res
-      .status(500)
-      .json({ result: [], error: `Cannot update diary ${idDiary}` });
+    e.entity = "diary";
+    next(e);
   }
 };
 
-const deleteDiary = async (req, res) => {
+const deleteDiary = async (req, res, next) => {
   const idDiary = req.params.idDiary;
   try {
     const diaryDeleted = await deleteOneDiary(idDiary);
     if (diaryDeleted != null) {
       res.status(200).json({ result: [diaryDeleted], error: [] });
     } else {
-      res.status(404).json({
-        result: [],
-        error: [`Cannot find diary  with id ${idDiary}`],
-      });
+      throw {
+        code: 404,
+        message: `Cannot find diary  with id ${idDiary}`,
+      };
     }
   } catch (e) {
-    console.error(`[ERROR] Diary.Controller.deleteOneDiary error: ${e}`);
-    res
-      .status(500)
-      .json({ result: [], error: `Cannot delete diary  ${idDiary}` });
+    e.entity = "diary";
+    next(e);
   }
 };
 
-const getAllEventsFromDiary = async (req, res) => {
+const getAllEventsFromDiary = async (req, res, next) => {
   const idDiary = req.params.idDiary;
   console.log(`${req.params.idDiary}`);
   try {
@@ -105,30 +101,24 @@ const getAllEventsFromDiary = async (req, res) => {
     res.status(200).json({ result: list, error: [] });
   } catch (e) {
     console.error(`[ERROR] Diary.Controller.getAllEventsFromDiary error: ${e}`);
-    res.status(500).json({
-      result: [],
-      error: `Cannot get all events from diary  ${idDiary}`,
-    });
+    next(e);
   }
 };
 
-const createDiaryEvent = async (req, res) => {
+const createDiaryEvent = async (req, res, next) => {
   const idDiary = req.params.idDiary;
   const eventData = req.body;
-  console.log(`${req.params.idDiary}`);
+
   try {
     const eventCreated = await createOneEvent(idDiary, eventData);
     res.status(200).json({ result: [eventCreated], error: [] });
   } catch (e) {
-    console.error(`[ERROR] Diary.Controller.createDiaryEvent error: ${e}`);
-    res.status(500).json({
-      result: [],
-      error: `Cannot create an event in diary ${idDiary}`,
-    });
+    e.entity = "event";
+    next(e);
   }
 };
 
-const updateDiaryEvent = async (req, res) => {
+const updateDiaryEvent = async (req, res, next) => {
   const idDiary = req.params.idDiary;
   const idEvent = req.params.idEvent;
   const dataEvent = req.body;
@@ -140,21 +130,15 @@ const updateDiaryEvent = async (req, res) => {
         error: [],
       });
     } else {
-      res.status(404).json({
-        result: [],
-        error: [`Cannot find event with id ${idEvent}`],
-      });
+      throw { code: 404, message: `Cannot find event with id ${idEvent}` };
     }
   } catch (e) {
-    console.error(`[ERROR] Diary.Controller.updateDiaryEvent error: ${e}`);
-    res.status(500).json({
-      result: [],
-      error: `Cannot update event ${idEvent} from diary  ${idDiary}`,
-    });
+    e.entity = "event";
+    next(e);
   }
 };
 
-const deleteDiaryEvent = async (req, res) => {
+const deleteDiaryEvent = async (req, res, next) => {
   const idDiary = req.params.idDiary;
   const idEvent = req.params.idEvent;
   try {
@@ -165,35 +149,36 @@ const deleteDiaryEvent = async (req, res) => {
         error: [],
       });
     } else {
-      res.status(404).json({
-        result: [],
-        error: [`Cannot find event with id ${idEvent}`],
-      });
+      throw {
+        code: 404,
+        message: `Cannot find event with id ${idEvent}`,
+      };
     }
   } catch (e) {
-    console.error(`[ERROR] Diary.Controller.deleteDiaryEvent error: ${e}`);
-    res.status(500).json({
-      result: [],
-      error: `Cannot delete diary events from diary ${idDiary}`,
-    });
+    e.entity = "event";
+    next(e);
   }
 };
 
-const getDiaryEvent = async (req, res) => {
+const getDiaryEvent = async (req, res, next) => {
   const idDiary = req.params.idDiary;
   const idEvent = req.params.idEvent;
   try {
     const eventData = await findOneEvents(idEvent);
-    res.status(200).json({
-      result: eventData,
-      error: [],
-    });
+    if (eventData) {
+      res.status(200).json({
+        result: eventData,
+        error: [],
+      });
+    } else {
+      throw {
+        code: 404,
+        message: "Cannot find event",
+      };
+    }
   } catch (e) {
-    console.error(`[ERROR] Diary.Controller.getDiaryEvent error: ${e}`);
-    res.status(500).json({
-      result: [],
-      error: `Cannot get diary events  from diary ${idDiary}`,
-    });
+    e.entity = "event";
+    next(e);
   }
 };
 
