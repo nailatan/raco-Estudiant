@@ -14,66 +14,61 @@ const sendError = (res, e, genericError) => {
   }
 };
 
-const findAll = async (req, res) => {
+const findAll = async (req, res, next) => {
   try {
     const list = await Diary.find().exec();
     res.status(200).send({ result: list, error: [] });
   } catch (e) {
-    console.error(`[ERROR] Cannot get all diaries ${e}`);
-    sendError(res, e, "Cannot get all diaries");
+    next(e);
   }
 };
 
-const createOne = async (req, res) => {
+const createOne = async (req, res, next) => {
   const { name } = req.body;
   try {
     const doc = await Diary.create([{ name: name }]);
 
     res.status(201).send({ result: doc, error: [] });
   } catch (e) {
-    console.error(`[ERROR] Cannot create ${e}`);
-    sendError(res, e, "Something went wrong in creating the diary");
+    next(e);
   }
 };
 
-const updateOne = async (req, res) => {
+const updateOne = async (req, res, next) => {
   const { name } = req.body;
   const idDiary = req.params.idDiary;
 
-  if (name === "") sendError(res, "", "Name is required"); //Las validaciones no se ejecutan en el Update
   try {
+    if (name === "") {
+      throw new Error("Name is required");
+    } //Las validaciones no se ejecutan en el Update
+
     const doc = await Diary.findOneAndUpdate(
       { _id: idDiary },
       { name: name },
       { new: true }
     );
     if (doc === null) {
-      return res
-        .status(404)
-        .send({ result: [], error: [`Cannot updated diary`] });
+      throw new Error(`Cannot updated diary`);
+    } else {
+      res.status(200).send({ result: { doc }, error: [] });
     }
-
-    res.status(200).send({ result: { doc }, error: [] });
   } catch (e) {
-    console.error(`[ERROR] Cannot update diary ${e}`);
-    sendError(res, e, "Cannot updated diary");
+    next(e);
   }
 };
 
-const deleteOne = async (req, res) => {
+const deleteOne = async (req, res, next) => {
   const idDiary = req.params.idDiary;
   try {
     const doc = await Diary.findOneAndDelete({ _id: idDiary }, { new: true });
     if (doc === null) {
-      return res
-        .status(404)
-        .send({ result: [], error: [`Not exist diary with id ${idDiary}`] });
+      throw new Error(`Not exist diary with id ${idDiary}`);
+    } else {
+      res.status(200).send({ result: doc, error: [] });
     }
-
-    res.status(200).send({ result: doc, error: [] });
   } catch (e) {
-    console.error(`[ERROR] Cannot delete Diary ${idDiary} ${e}`);
-    sendError(res, e, `Cannot delete diary  ${idDiary}`);
+    next(e);
   }
 };
 

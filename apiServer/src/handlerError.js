@@ -15,6 +15,7 @@ function handleError(err, req, res, next) {
       httpCode = 500;
       break;
     case "23505":
+    case 11000:
       httpCode = 400;
       msg = `This data already exists`;
       break;

@@ -24,7 +24,7 @@ server.get("/", (req, res) => {
 server.use(handleError);
 
 const connect = async () => {
-  // await dbMongo.connect();
+  await dbMongo.connect();
   server.listen(PORT, () => console.log(`Server is live in port ${PORT}`));
 };
 
