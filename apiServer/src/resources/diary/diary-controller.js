@@ -33,10 +33,7 @@ const getDiary = async (req, res, next) => {
         error: [],
       });
     } else {
-      throw {
-        message: `Cannot find diary  with id ${idDiary}`,
-        code: "404",
-      };
+      throw new Error(`Cannot find diary  with id ${idDiary}`);
     }
   } catch (e) {
     e.entity = "diary";
@@ -50,7 +47,6 @@ const createDiary = async (req, res, next) => {
     const diaryCreated = await createOneDiary(dataDiary);
     res.status(200).json({ result: [diaryCreated], error: [] });
   } catch (e) {
-    e.entity = "diary";
     next(e);
   }
 };
@@ -63,14 +59,9 @@ const updateDiary = async (req, res, next) => {
     if (diaryUpdated != null) {
       res.status(200).json({ result: [diaryUpdated], error: [] });
     } else {
-      throw {
-        code: 404,
-        entity: "diary",
-        message: `Cannot find diary  with id ${idDiary}`,
-      };
+      throw new Error(`Cannot find diary  with id ${idDiary}`);
     }
   } catch (e) {
-    e.entity = "diary";
     next(e);
   }
 };
@@ -82,13 +73,9 @@ const deleteDiary = async (req, res, next) => {
     if (diaryDeleted != null) {
       res.status(200).json({ result: [diaryDeleted], error: [] });
     } else {
-      throw {
-        code: 404,
-        message: `Cannot find diary  with id ${idDiary}`,
-      };
+      throw new Error(`Cannot find diary  with id ${idDiary}`);
     }
   } catch (e) {
-    e.entity = "diary";
     next(e);
   }
 };
