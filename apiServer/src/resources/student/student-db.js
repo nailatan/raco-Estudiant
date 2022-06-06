@@ -1,7 +1,7 @@
 const pool = require("../../pool-db");
 
-const queryGetAllStudentsSQL = `SELECT s.idStudent, p.firstName, p.middleName, p.lastName, p.birthDate, p.adress, p.phone, p.mobile, p.email,
-                                       s.emailStudent, s.cip, s.admissionDate
+const queryGetAllStudentsSQL = `SELECT s.idStudent, p.firstName, p.middleName, p.lastName, to_char(p.birthDate, 'YYYY-MM-DD') as birthDate, p.adress, p.phone, p.mobile, p.email,
+                                       s.emailStudent, s.cip, to_char(s.admissionDate, 'YYYY-MM-DD') as admissionDate
                                   FROM student s 
                                   INNER JOIN person p ON p.idperson = s.idStudent`;
 const getAllStudents = async () => {
@@ -37,8 +37,8 @@ const updateOneStudent = async (idStudent, student) => {
   return result.rows[0];
 };
 
-const findOneStudentSQL = `SELECT s.idStudent, p.firstName, p.middleName, p.lastName, p.birthDate, p.adress, p.phone, p.mobile, p.email,
-                           s.emailStudent, s.cip, s.admissionDate
+const findOneStudentSQL = `SELECT s.idStudent, p.firstName, p.middleName, p.lastName, to_char(p.birthDate, 'YYYY-MM-DD') as birthDate, p.adress, p.phone, p.mobile, p.email,
+                           s.emailStudent, s.cip, to_char(s.admissionDate, 'YYYY-MM-DD') as admissionDate
                            FROM student s 
                            INNER JOIN person p ON p.idperson = s.idStudent
                            WHERE s.idStudent = $1`;

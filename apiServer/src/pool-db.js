@@ -1,8 +1,6 @@
 const { Client, Pool } = require("pg");
 require("dotenv").config();
 
-const USER = process.env["USUARIO_RACO_BD"];
-
 const checkEnvVar = (name) => {
   if (process.env[name] === undefined) {
     throw new Error(`Undefined env. variable ${name}!!!`);
