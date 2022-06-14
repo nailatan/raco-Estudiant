@@ -1,4 +1,5 @@
 const pool = require("../../pool-db");
+const dbPerson = require("../person/person-db");
 
 const queryGetAllStudentsSQL = `SELECT s.idStudent, p.firstName, p.middleName, p.lastName, to_char(p.birthDate, 'YYYY-MM-DD') as birthDate, p.adress, p.phone, p.mobile, p.email,
                                        s.emailStudent, s.cip, to_char(s.admissionDate, 'YYYY-MM-DD') as admissionDate
@@ -12,14 +13,34 @@ const getAllStudents = async () => {
 const insertOneStudentSQL = `INSERT INTO student (idStudent, emailStudent, cip, admissionDate)
                              VALUES($1, $2, $3, $4) RETURNING *`;
 const insertOneStudent = async (student) => {
-  const { idStudent, emailStudent, cip, admissionDate } = student;
-  const result = await pool.query(insertOneStudentSQL, [
-    idStudent,
-    emailStudent,
-    cip,
-    admissionDate,
-  ]);
-  return result.rows[0];
+  const { emailStudent, cip, admissionDate } = student;
+  let studentCompose = {};
+  const client = await pool.connect();
+  try {
+    client.query("BEGIN");
+    const personCreate = await dbPerson.insertOnePerson(student, client);
+    const idStudent = personCreate.idperson;
+
+    const result = await client.query(insertOneStudentSQL, [
+      idStudent,
+      emailStudent,
+      cip,
+      admissionDate,
+    ]);
+
+    const studentCreate = result.rows[0];
+
+    studentCompose = { ...personCreate, ...studentCreate };
+    delete studentCompose.idperson;
+    await client.query("COMMIT");
+  } catch (e) {
+    await client.query("ROLLBACK");
+    throw e;
+  } finally {
+    await client.release();
+  }
+
+  return studentCompose;
 };
 
 const updateOneStudentSQL = `UPDATE student 
@@ -27,14 +48,34 @@ const updateOneStudentSQL = `UPDATE student
                         WHERE idStudent = $4
                         RETURNING *`;
 const updateOneStudent = async (idStudent, student) => {
+  let studentComplete = {};
   const { emailStudent, cip, admissionDate } = student;
-  const result = await pool.query(updateOneStudentSQL, [
-    emailStudent,
-    cip,
-    admissionDate,
-    idStudent,
-  ]);
-  return result.rows[0];
+  const client = await pool.connect();
+
+  try {
+    client.query("BEGIN");
+    const personUpdated = await dbPerson.updateOnePerson(
+      idStudent,
+      student,
+      client
+    );
+    const result = await client.query(updateOneStudentSQL, [
+      emailStudent,
+      cip,
+      admissionDate,
+      idStudent,
+    ]);
+    const studentUpdate = result.rows[0];
+    studentComplete = { ...personUpdated, ...studentUpdate };
+    delete student.idperson;
+    client.query("COMMIT");
+  } catch (e) {
+    client.query("ROLLBACK");
+    throw e;
+  } finally {
+    client.release();
+  }
+  return studentComplete;
 };
 
 const findOneStudentSQL = `SELECT s.idStudent, p.firstName, p.middleName, p.lastName, to_char(p.birthDate, 'YYYY-MM-DD') as birthDate, p.adress, p.phone, p.mobile, p.email,
@@ -51,14 +92,32 @@ const findOneStudent = async (idStudent) => {
 const deleteOneStudentSQL = `DELETE FROM student WHERE idStudent = $1 RETURNING *`;
 
 const deleteOneStudent = async (idStudent) => {
-  const result = await pool.query(deleteOneStudentSQL, [idStudent]);
-  return result.rows[0];
+  let studentComplete = {};
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN");
+    const result = await client.query(deleteOneStudentSQL, [idStudent]);
+    const studentDelete = result.rows[0];
+
+    const personDelete = await dbPerson.deleteOnePerson(idStudent, client);
+
+    studentComplete = { ...personDelete, ...studentDelete };
+    delete studentComplete.idperson;
+
+    await client.query("COMMIT");
+  } catch (e) {
+    await client.query("ROLLBACK");
+    throw e;
+  } finally {
+    await client.release();
+  }
+  return studentComplete;
 };
 
 module.exports = {
   getAllStudents,
-  insertOneStudent,
   findOneStudent,
   deleteOneStudent,
   updateOneStudent,
+  insertOneStudent,
 };
