@@ -2,6 +2,13 @@
 
 const insertOnePersonSQL = `INSERT INTO person (firstName, middleName, lastName, birthDate, adress, phone, mobile, email)
                              VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`;
+const updateOnePersonSQL = `UPDATE person 
+                               SET firstName = $1, middleName=$2, lastName=$3, birthDate=$4, adress=$5, 
+                                   phone=$6, mobile=$7, email=$8
+                             WHERE idPerson = $9
+                             RETURNING *`;
+const deleteOnePersonSQL = `DELETE FROM person WHERE idPerson = $1 RETURNING *`;
+
 const insertOnePerson = async (user, client) => {
   const {
     firstName,
@@ -13,6 +20,7 @@ const insertOnePerson = async (user, client) => {
     mobile,
     email,
   } = user;
+
   const result = await client.query(insertOnePersonSQL, [
     firstName,
     middleName,
@@ -26,11 +34,6 @@ const insertOnePerson = async (user, client) => {
   return result.rows[0];
 };
 
-const updateOnePersonSQL = `UPDATE person 
-                         SET firstName = $1, 
-                             middleName=$2, lastName=$3, birthDate=$4, adress=$5, phone=$6, mobile=$7, email=$8
-                        WHERE idPerson = $9
-                        RETURNING *`;
 const updateOnePerson = async (idPerson, dataPerson, client) => {
   const {
     firstName,
@@ -56,8 +59,6 @@ const updateOnePerson = async (idPerson, dataPerson, client) => {
   ]);
   return result.rows[0];
 };
-
-const deleteOnePersonSQL = `DELETE FROM person WHERE idPerson = $1 RETURNING *`;
 
 const deleteOnePerson = async (idPerson, client) => {
   const result = await client.query(deleteOnePersonSQL, [idPerson]);

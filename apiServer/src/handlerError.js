@@ -21,7 +21,7 @@ function handleError(err, req, res, next) {
       break;
     case "23503":
       httpCode = 400;
-      msg = `Cannot create what you want. Parent doesn't exist`;
+      msg = `Cannot create/delete what you want. `;
       break;
     case "23502":
       httpCode = 400;

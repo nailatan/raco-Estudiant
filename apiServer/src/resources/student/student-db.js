@@ -5,13 +5,24 @@ const queryGetAllStudentsSQL = `SELECT s.idStudent, p.firstName, p.middleName, p
                                        s.emailStudent, s.cip, to_char(s.admissionDate, 'YYYY-MM-DD') as admissionDate
                                   FROM student s 
                                   INNER JOIN person p ON p.idperson = s.idStudent`;
+
+const findOneStudentSQL = `${queryGetAllStudentsSQL} WHERE s.idStudent = $1`;
+
+const insertOneStudentSQL = `INSERT INTO student (idStudent, emailStudent, cip, admissionDate)
+                             VALUES($1, $2, $3, $4) RETURNING *`;
+
+const updateOneStudentSQL = `UPDATE student 
+                                SET emailStudent = $1, cip = $2, admissionDate =$3
+                              WHERE idStudent = $4
+                            RETURNING *`;
+
+const deleteOneStudentSQL = `DELETE FROM student WHERE idStudent = $1 RETURNING *`;
+
 const getAllStudents = async () => {
   const result = await pool.query(queryGetAllStudentsSQL);
   return result.rows;
 };
 
-const insertOneStudentSQL = `INSERT INTO student (idStudent, emailStudent, cip, admissionDate)
-                             VALUES($1, $2, $3, $4) RETURNING *`;
 const insertOneStudent = async (student) => {
   const { emailStudent, cip, admissionDate } = student;
   let studentCompose = {};
@@ -43,10 +54,6 @@ const insertOneStudent = async (student) => {
   return studentCompose;
 };
 
-const updateOneStudentSQL = `UPDATE student 
-                         SET emailStudent = $1, cip = $2, admissionDate =$3
-                        WHERE idStudent = $4
-                        RETURNING *`;
 const updateOneStudent = async (idStudent, student) => {
   let studentComplete = {};
   const { emailStudent, cip, admissionDate } = student;
@@ -78,18 +85,10 @@ const updateOneStudent = async (idStudent, student) => {
   return studentComplete;
 };
 
-const findOneStudentSQL = `SELECT s.idStudent, p.firstName, p.middleName, p.lastName, to_char(p.birthDate, 'YYYY-MM-DD') as birthDate, p.adress, p.phone, p.mobile, p.email,
-                           s.emailStudent, s.cip, to_char(s.admissionDate, 'YYYY-MM-DD') as admissionDate
-                           FROM student s 
-                           INNER JOIN person p ON p.idperson = s.idStudent
-                           WHERE s.idStudent = $1`;
-
 const findOneStudent = async (idStudent) => {
   const result = await pool.query(findOneStudentSQL, [idStudent]);
   return result.rows[0];
 };
-
-const deleteOneStudentSQL = `DELETE FROM student WHERE idStudent = $1 RETURNING *`;
 
 const deleteOneStudent = async (idStudent) => {
   let studentComplete = {};

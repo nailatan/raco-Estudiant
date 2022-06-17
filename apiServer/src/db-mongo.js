@@ -1,12 +1,6 @@
 const mongoose = require("mongoose");
+const { checkEnvVar } = require("./helper");
 require("dotenv").config();
-
-const checkEnvVar = (name) => {
-  if (process.env[name] === undefined) {
-    throw new Error(`Undefined env. variable ${name}!!!`);
-  }
-  return process.env[name];
-};
 
 const connect = async () => {
   try {
