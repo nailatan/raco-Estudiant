@@ -17,5 +17,3 @@ APIs existentes:
 - mongoDB-raco: definición docker de la BBDD MongoDB
 
 # TODO:
-
-    - student.admissionDate: no guarda la fecha que llega

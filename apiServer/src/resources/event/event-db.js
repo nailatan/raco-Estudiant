@@ -1,12 +1,12 @@
 const pool = require("../../pool-db");
 
-const findAllEventsSQL = `SELECT * FROM events WHERE idDiary = $1`;
+const findAllEventsSQL = `SELECT idEvent, idDiary, name, description, to_char(startdate, 'YYYY-MM-DD HH24:MI:SS') as startDate, to_char(enddate, 'YYYY-MM-DD HH24:MI:SS') as endDate FROM events WHERE idDiary = $1`;
 const findAllEvents = async (idDiary) => {
   const result = await pool.query(findAllEventsSQL, [idDiary]);
   return result.rows;
 };
 
-const findOneEventsSQL = `SELECT * FROM events WHERE idEvent = $1`;
+const findOneEventsSQL = `SELECT idEvent, idDiary, name, description, to_char(startdate, , 'YYYY-MM-DD HH24:MI:SS'), to_char(enddate, , 'YYYY-MM-DD HH24:MI:SS') FROM events WHERE idEvent = $1`;
 const findOneEvents = async (idEvent) => {
   const result = await pool.query(findOneEventsSQL, [idEvent]);
   return result.rows[0];
