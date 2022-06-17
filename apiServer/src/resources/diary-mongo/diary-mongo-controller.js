@@ -23,6 +23,17 @@ const findAll = async (req, res, next) => {
   }
 };
 
+const findOne = async (req, res, next) => {
+  const idDiary = req.params.idDiary;
+
+  try {
+    const list = await Diary.find({ _id: idDiary }).exec();
+    res.status(200).send({ result: list, error: [] });
+  } catch (e) {
+    next(e);
+  }
+};
+
 const createOne = async (req, res, next) => {
   const { name } = req.body;
   try {
@@ -72,4 +83,4 @@ const deleteOne = async (req, res, next) => {
   }
 };
 
-module.exports = { findAll, createOne, deleteOne, updateOne };
+module.exports = { findAll, findOne, createOne, deleteOne, updateOne };
