@@ -15,14 +15,14 @@ const {
 const diaryRouter = express.Router();
 
 diaryRouter.get("/", getAllDiaries);
-diaryRouter.put("/", createDiary);
-diaryRouter.post("/:idDiary", updateDiary);
+diaryRouter.post("/", createDiary);
+diaryRouter.put("/:idDiary", updateDiary);
 diaryRouter.delete("/:idDiary", deleteDiary);
 diaryRouter.get("/:idDiary", getDiary);
 
 diaryRouter.get("/:idDiary/events", getAllEventsFromDiary);
-diaryRouter.put("/:idDiary/events", createDiaryEvent);
-diaryRouter.post("/:idDiary/events/:idEvent", updateDiaryEvent);
+diaryRouter.post("/:idDiary/events", createDiaryEvent);
+diaryRouter.put("/:idDiary/events/:idEvent", updateDiaryEvent);
 diaryRouter.delete("/:idDiary/events/:idEvent", deleteDiaryEvent);
 diaryRouter.get("/:idDiary/events/:idEvent", getDiaryEvent);
 
