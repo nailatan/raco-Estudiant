@@ -87,7 +87,9 @@ const deleteOne = async (req, res, next) => {
 const findEvents = async (req, res, next) => {
   const idDiary = req.params.idDiary;
   try {
-    const list = await Event.find({ idDiary: idDiary }).exec();
+    const list = await Event.find({ idDiary: idDiary })
+      .populate("idDiary")
+      .exec();
     res.status(200).send({ result: list, error: [] });
   } catch (e) {
     next(e);
@@ -150,7 +152,7 @@ const deleteDiaryEvent = async (req, res, next) => {
 const findOneEvent = async (req, res, next) => {
   const idEvent = req.params.idEvent;
   try {
-    const list = await Event.find({ _id: idEvent }).exec();
+    const list = await Event.find({ _id: idEvent }).populate("idDiary").exec();
     res.status(200).send({ result: list, error: [] });
   } catch (e) {
     next(e);
