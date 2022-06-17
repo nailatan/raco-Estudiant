@@ -9,6 +9,7 @@ const diarySchema = new mongoose.Schema(
       unique: true,
       immutable: false,
     },
+    events: [{ type: mongoose.Schema.Types.ObjectId, ref: "Event" }],
   },
   { timestamps: true }
 );

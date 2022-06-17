@@ -28,7 +28,7 @@ const findOne = async (req, res, next) => {
   const idDiary = req.params.idDiary;
 
   try {
-    const list = await Diary.find({ _id: idDiary }).exec();
+    const list = await Diary.find({ _id: idDiary }).populate("events").exec();
     res.status(200).send({ result: list, error: [] });
   } catch (e) {
     next(e);
