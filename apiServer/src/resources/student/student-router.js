@@ -11,11 +11,11 @@ const studentRouter = express.Router();
 
 studentRouter.get("/", getAllStudent);
 
-studentRouter.put("/", createStudent);
+studentRouter.post("/", createStudent);
 
 studentRouter.delete("/:idStudent", deleteStudent);
 
-studentRouter.post("/:idStudent", updateStudent);
+studentRouter.put("/:idStudent", updateStudent);
 
 studentRouter.get("/:idStudent", getOneStudent);
 
