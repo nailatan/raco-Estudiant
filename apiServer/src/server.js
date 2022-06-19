@@ -7,6 +7,9 @@ const diaryRouter = require("./resources/diary/diary-router");
 const diaryMongoRouter = require("./resources/diary-mongo/diary-mongo-router");
 const handleError = require("./handlerError");
 const dbMongo = require("./db-mongo");
+const studentSchema = require("./graphql/user/studentSchema");
+const studentResolver = require("./graphql/user/studentResolver");
+const { graphqlHTTP } = require("express-graphql");
 const PORT = 1234;
 
 server.use(cors());
@@ -21,11 +24,31 @@ server.get("/", (req, res) => {
   res.send("hola");
 });
 
+server.use(
+  "/graphql",
+  graphqlHTTP({
+    schema: studentSchema,
+    rootValue: studentResolver,
+    graphiql: true,
+  })
+);
+
 server.use(handleError);
+
+// server.use(
+//   "/graphql",
+//   graphqlHTTP({
+//     schema: studentSchema,
+//     rootValue: studentResolver,
+//     graphiql: true,
+//   })
+// );
 
 const connect = async () => {
   await dbMongo.connect();
-  server.listen(PORT, () => console.log(`Server is live in port ${PORT}`));
+  server.listen(PORT, () => {
+    console.log(`Server is live in port ${PORT}`);
+  });
 };
 
 connect();
