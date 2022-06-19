@@ -1,6 +1,8 @@
 const {
   getAllStudents,
   findOneStudent,
+  insertOneStudent,
+  deleteOneStudent,
 } = require("../../resources/student/student-db");
 
 const studentResolver = {
@@ -13,6 +15,15 @@ const studentResolver = {
     }
 
     return students;
+  },
+  createStudent: async (args) => {
+    const studentInput = args.student;
+    const student = await insertOneStudent(studentInput);
+    return student;
+  },
+  deleteStudent: async ({ idStudent }) => {
+    const student = await deleteOneStudent(idStudent);
+    return student;
   },
   hello: () => {
     return "Hello world!!!";

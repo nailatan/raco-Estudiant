@@ -31,7 +31,6 @@ const insertOneStudent = async (student) => {
     client.query("BEGIN");
     const personCreate = await dbPerson.insertOnePerson(student, client);
     const idStudent = personCreate.idperson;
-
     const result = await client.query(insertOneStudentSQL, [
       idStudent,
       emailStudent,
@@ -50,7 +49,7 @@ const insertOneStudent = async (student) => {
   } finally {
     await client.release();
   }
-
+  console.log(studentCompose);
   return studentCompose;
 };
 
