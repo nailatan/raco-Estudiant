@@ -2,7 +2,7 @@ const { buildSchema } = require("graphql");
 
 var studentSchema = buildSchema(`
 type Student {
-    idStudent: String,
+    idstudent: String!,
     firstname: String,
     middlename: String,
     lastname: String
@@ -17,7 +17,7 @@ type Student {
 }, 
     type Query {
             hello: String
-            student: Student
+            student: [Student]
         }
 `);
 

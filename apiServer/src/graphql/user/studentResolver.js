@@ -1,8 +1,8 @@
 const { getAllStudents } = require("../../resources/student/student-db");
 
 const studentResolver = {
-  student: () => {
-    const students = getAllStudents();
+  student: async () => {
+    const students = await getAllStudents();
     return students;
   },
   hello: () => {
