@@ -1,0 +1,21 @@
+_id: req_33c804b35c2640cfb044bca7a6d3e319
+type: Request
+parentId: fld_b5db4179e0544f6eaf7fb5bd4b13418d
+modified: 1659566522928
+created: 1659566522928
+url: http://{{host}}:{{port}}/api/mongo/diary/62ace5fdb49d3187ef8289c4
+name: Consultar agenda
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1655491518865
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

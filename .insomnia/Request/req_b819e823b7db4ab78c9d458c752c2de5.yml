@@ -1,0 +1,21 @@
+_id: req_b819e823b7db4ab78c9d458c752c2de5
+type: Request
+parentId: fld_b5db4179e0544f6eaf7fb5bd4b13418d
+modified: 1659566522915
+created: 1659566522915
+url: http://{{host}}:{{port}}/api/mongo/diary/62acca501389d868c0b6f086
+name: Eliminar agenda
+description: ""
+method: DELETE
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1654028427461
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

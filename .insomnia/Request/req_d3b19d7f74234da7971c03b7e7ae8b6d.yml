@@ -1,0 +1,39 @@
+_id: req_d3b19d7f74234da7971c03b7e7ae8b6d
+type: Request
+parentId: fld_97b147fde39e4f728f778a0af7318d01
+modified: 1659566522783
+created: 1659566522783
+url: http://{{host}}:{{port}}/api/student/
+name: Añadir estudiante
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    		"firstName": "Juan",
+        "middleName" : "Perez",
+        "lastName": "Mongragon",
+        "birthDate": "2000-01-20",
+        "address": "C/ Roger de Flor num. 989",
+        "phone": "933874851",
+        "mobile": "6514565621",
+        "email": "jpmmondragon@gmail.com",
+        "emailStudent": "juan.perez.mondragon@colegio.gmail.com",
+        "cip": "AHJD8971231",
+        "admissionDate": "2003-05-01"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_76b1bc62039f4d0db36ee67a6e0cc51e
+authentication: {}
+metaSortKey: -1653680192574
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

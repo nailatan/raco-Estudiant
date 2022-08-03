@@ -1,0 +1,17 @@
+_id: fld_9d604a679cb6421bb94b6d1d18698eeb
+type: RequestGroup
+parentId: wrk_148a6bf3aaed4983a3528159140f6715
+modified: 1659566522757
+created: 1659566522757
+name: Raco-estudiant
+description: ""
+environment:
+  host: localhost
+  port: "1234"
+  baseUrl: http://{{host}:{{port}
+environmentPropertyOrder:
+  "&":
+    - host
+    - port
+    - baseUrl
+metaSortKey: -1000000000

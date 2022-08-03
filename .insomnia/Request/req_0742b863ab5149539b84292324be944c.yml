@@ -1,0 +1,29 @@
+_id: req_0742b863ab5149539b84292324be944c
+type: Request
+parentId: fld_b5db4179e0544f6eaf7fb5bd4b13418d
+modified: 1659566522922
+created: 1659566522922
+url: http://{{host}}:{{port}}/api/mongo/diary/62ace871cdbfc722f0b3fd7d
+name: Modificar agenda
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name" : "Agenda de pruebas modid"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_c497e0a13772401b8cbc9715553cfa8c
+authentication: {}
+metaSortKey: -1654029256386
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

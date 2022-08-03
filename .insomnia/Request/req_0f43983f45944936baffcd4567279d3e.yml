@@ -1,0 +1,26 @@
+_id: req_0f43983f45944936baffcd4567279d3e
+type: Request
+parentId: fld_a18706ab0a7640199c5616679e33f4c3
+modified: 1659566522841
+created: 1659566522841
+url: http://{{host}}:{{port}}/api/diary/1
+name: Modificar agenda
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: '{"name": "Primera Agenda.Modif"}'
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_483e49484ca446b0b8c62d8301db5cd2
+authentication: {}
+metaSortKey: -1653857529268.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,21 @@
+_id: req_17926b197d734240a135564f64b48033
+type: Request
+parentId: fld_97b147fde39e4f728f778a0af7318d01
+modified: 1659566522791
+created: 1659566522791
+url: http://{{host}}:{{port}}/api/student/44
+name: Eliminar estudiante
+description: ""
+method: DELETE
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1653680192424
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

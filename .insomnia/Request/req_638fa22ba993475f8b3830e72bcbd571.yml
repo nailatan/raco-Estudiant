@@ -1,0 +1,33 @@
+_id: req_638fa22ba993475f8b3830e72bcbd571
+type: Request
+parentId: fld_b5db4179e0544f6eaf7fb5bd4b13418d
+modified: 1659566522934
+created: 1659566522934
+url: http://{{host}}:{{port}}/api/mongo/diary/62ace5fdb49d3187ef8289c4/events
+name: Añadir evento
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name" :"Evento6564",
+     "description" : "Temas 6 y3", 
+     "startDate" :"2022-06-01 10:00:00", 
+     "endDate" : "2022-06-01 12:00:00", 
+     "idTypeEvent": 1
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_26f0110a3f9d4298be6d10d2f6c98cdc
+authentication: {}
+metaSortKey: -1655498211313
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

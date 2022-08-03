@@ -1,0 +1,21 @@
+_id: req_d5d505cf44194bcb942f2528f9c1df0d
+type: Request
+parentId: fld_a18706ab0a7640199c5616679e33f4c3
+modified: 1659566522878
+created: 1659566522878
+url: http://{{host}}:{{port}}/api/diary/1/events/2
+name: Consultar evento de una agenda
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1653805323552
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

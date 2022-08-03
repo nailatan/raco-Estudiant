@@ -1,0 +1,21 @@
+_id: req_b6e7414bbe4e40ba909b3a1afb212fca
+type: Request
+parentId: fld_b5db4179e0544f6eaf7fb5bd4b13418d
+modified: 1659566522945
+created: 1659566522945
+url: http://{{host}}:{{port}}/api/mongo/diary/62ace871cdbfc722f0b3fd7d/events/62acea2f24ab045da8463662
+name: Consultar evento
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1655496538201
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

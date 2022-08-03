@@ -1,0 +1,33 @@
+_id: req_31ae7aaf6fe64f61809594e0a556c55a
+type: Request
+parentId: fld_b5db4179e0544f6eaf7fb5bd4b13418d
+modified: 1659566522949
+created: 1659566522949
+url: http://{{host}}:{{port}}/api/mongo/diary/62ace871cdbfc722f0b3fd7d/events/62acea2f24ab045da8463662
+name: Modificar evento
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name" :"Evento modificado3",
+     "description" : "Temas 6 y 73", 
+     "startDate" :"2022-06-03 10:00:00", 
+     "endDate" : "2022-06-03 12:00:00", 
+     "idTypeEvent": 1
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_26f0110a3f9d4298be6d10d2f6c98cdc
+authentication: {}
+metaSortKey: -1655497374757
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

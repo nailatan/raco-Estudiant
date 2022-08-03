@@ -1,0 +1,31 @@
+_id: req_0812259500eb4de7af4a6aba225af69a
+type: Request
+parentId: fld_a18706ab0a7640199c5616679e33f4c3
+modified: 1659566522871
+created: 1659566522871
+url: http://{{host}}:{{port}}/api/diary/2/events/2
+name: Modificar evento de una agenda
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {"name": "Examen.Modificado", 
+     "description" : "Temas 6 y 7 y 8", 
+     "startDate" :"2022-07-01 09:00:00", 
+     "endDate" : "2022-07-01 10:00:00", 
+     "idTypeEvent": 1}
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_64375b25f11e41f3952935f04b4e73a6
+authentication: {}
+metaSortKey: -1653805323602
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

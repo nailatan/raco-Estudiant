@@ -1,0 +1,21 @@
+_id: req_350954ea9a2243c5b1d69eb49fbd6b19
+type: Request
+parentId: fld_a18706ab0a7640199c5616679e33f4c3
+modified: 1659566522890
+created: 1659566522890
+url: http://{{host}}:{{port}}/api/diary/1
+name: Consultar agenda
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1653857529262.25
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,21 @@
+_id: req_8f78004160814d0384a1530fdbf4a25b
+type: Request
+parentId: fld_b5db4179e0544f6eaf7fb5bd4b13418d
+modified: 1659566522903
+created: 1659566522903
+url: http://{{host}}:{{port}}/api/mongo/diary/
+name: Lista de agendas
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1653948551474
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

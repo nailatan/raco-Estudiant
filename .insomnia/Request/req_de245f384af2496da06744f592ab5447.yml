@@ -1,0 +1,21 @@
+_id: req_de245f384af2496da06744f592ab5447
+type: Request
+parentId: fld_a18706ab0a7640199c5616679e33f4c3
+modified: 1659566522849
+created: 1659566522849
+url: http://{{host}}:{{port}}/api/diary/1
+name: Eliminar agenda
+description: ""
+method: DELETE
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1653857529256
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

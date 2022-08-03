@@ -1,0 +1,21 @@
+_id: req_eca00bc2a2674e0e9eddb3d8d982b285
+type: Request
+parentId: fld_97b147fde39e4f728f778a0af7318d01
+modified: 1659566522809
+created: 1659566522809
+url: http://{{host}}:{{port}}/api/student/5
+name: Consultar estudiante
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1653680192524
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

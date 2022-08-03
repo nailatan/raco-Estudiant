@@ -1,0 +1,21 @@
+_id: req_14284a87a8e84d0097e2f3b38a465016
+type: Request
+parentId: fld_a18706ab0a7640199c5616679e33f4c3
+modified: 1659566522856
+created: 1659566522856
+url: http://{{host}}:{{port}}/api/diary/1/events
+name: Lista eventos de una agenda
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1653805323702
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

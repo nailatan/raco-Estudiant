@@ -1,0 +1,39 @@
+_id: req_fcf47128017149acb011af2f49bce209
+type: Request
+parentId: fld_97b147fde39e4f728f778a0af7318d01
+modified: 1659566522800
+created: 1659566522800
+url: http://{{host}}:{{port}}/api/student/4
+name: Modificar estudiante
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    		"firstName": "Nombre5",
+        "middleName" : "apellido",
+        "lastName": "Mongragon1",
+        "birthDate": "2000-01-20",
+        "address": "C/ Roger de Flor num. 989",
+        "phone": "933874851",
+        "mobile": "6514565621",
+        "email": "jpmmondragon@gmail.com",
+        "emailStudent": "j5uan.perez.mondragon@colegio.gmail.com",
+        "cip": "AHJD8971231",
+        "admissionDate": "2003-05-01"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_00d654861826484ca3df619da97d39a1
+authentication: {}
+metaSortKey: -1653680192474
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

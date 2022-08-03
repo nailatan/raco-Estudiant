@@ -1,0 +1,26 @@
+_id: req_a0345e87fda5451eb400b96b1ec7d420
+type: Request
+parentId: fld_b5db4179e0544f6eaf7fb5bd4b13418d
+modified: 1659566522953
+created: 1659566522953
+url: http://{{host}}:{{port}}/api/mongo/diary/62ace871cdbfc722f0b3fd7d/events/62aceae65ba31766aaa02703
+name: Eliminar evento
+description: ""
+method: DELETE
+body:
+  mimeType: application/json
+  text: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_26f0110a3f9d4298be6d10d2f6c98cdc
+authentication: {}
+metaSortKey: -1655496956479
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

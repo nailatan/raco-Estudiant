@@ -1,0 +1,21 @@
+_id: req_3562b95ee4904d88b0dbbb71a7219fcc
+type: Request
+parentId: fld_97b147fde39e4f728f778a0af7318d01
+modified: 1659566522771
+created: 1659566522771
+url: http://{{host}}:{{port}}/api/student/
+name: Lista de estudiantes
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1653680192624
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

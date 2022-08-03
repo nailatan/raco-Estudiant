@@ -1,0 +1,21 @@
+_id: req_e9ac8f0f0e854b4e9eb7b3ee6befaa38
+type: Request
+parentId: fld_a18706ab0a7640199c5616679e33f4c3
+modified: 1659566522825
+created: 1659566522825
+url: http://{{host}}:{{port}}/api/diary
+name: Lista de agendas
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1653857529306
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,32 @@
+_id: req_14976784ab0f4616a5809c029d920b7a
+type: Request
+parentId: fld_a18706ab0a7640199c5616679e33f4c3
+modified: 1659566522865
+created: 1659566522865
+url: http://{{host}}:{{port}}/api/diary/1/events
+name: Añadir evento a la agenda
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name" :"Evento",
+     "description" : "Temas 6 y 7", 
+     "startDate" :"2022-06-01 10:00:00", 
+     "endDate" : "2022-06-01 12:00:00", 
+     "idTypeEvent": 1}
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_d5648364c2b94a37ad80df98c59a5452
+authentication: {}
+metaSortKey: -1653805323652
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

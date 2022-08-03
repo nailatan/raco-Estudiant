@@ -1,0 +1,29 @@
+_id: req_390066452728432fb80f93a2d5e6a5e3
+type: Request
+parentId: fld_b5db4179e0544f6eaf7fb5bd4b13418d
+modified: 1659566522909
+created: 1659566522909
+url: http://{{host}}:{{port}}/api/mongo/diary
+name: Añadir agenda
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name":  "Agenda3"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_44debc65f87a4587b8ef23d4bb68562d
+authentication: {}
+metaSortKey: -1653948551524
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
