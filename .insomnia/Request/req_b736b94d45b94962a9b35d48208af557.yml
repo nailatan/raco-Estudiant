@@ -1,0 +1,27 @@
+_id: req_b736b94d45b94962a9b35d48208af557
+type: Request
+parentId: fld_e5351f59d8474a85b86e3593261d5f2b
+modified: 1659566755113
+created: 1659566755113
+url: http://{{host}}:{{port}}/graphql
+name: Eliminar un estudiante
+description: ""
+method: POST
+body:
+  mimeType: application/graphql
+  text: '{"query":"mutation {\n\tdeleteStudent(\n\t\tidStudent: \"18\"\n\t)
+    {idstudent, firstname, email}\n}\n"}'
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_9ce5ba19d61541eaadd167c6ec9c9722
+authentication: {}
+metaSortKey: -1655655686970
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,27 @@
+_id: req_98211b05b22443f690b3be15812953fc
+type: Request
+parentId: fld_e5351f59d8474a85b86e3593261d5f2b
+modified: 1659566755079
+created: 1659566755079
+url: http://{{host}}:{{port}}/graphql
+name: Consulta estudiantes
+description: ""
+method: POST
+body:
+  mimeType: application/graphql
+  text: '{"query":"{\n\tstudent
+    {\n\t\tidstudent\n\t\tfirstname\n\t\temail\n\t\temailstudent\n\t\tbirthdate\n\t\tadmissiondate\n\t}\n}\n"}'
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_ac19f168239a4d659f1fc629fb35662d
+authentication: {}
+metaSortKey: -1655648590206
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

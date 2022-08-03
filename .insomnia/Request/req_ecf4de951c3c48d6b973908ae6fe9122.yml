@@ -1,0 +1,33 @@
+_id: req_ecf4de951c3c48d6b973908ae6fe9122
+type: Request
+parentId: fld_e5351f59d8474a85b86e3593261d5f2b
+modified: 1659566755103
+created: 1659566755103
+url: http://{{host}}:{{port}}/graphql
+name: Crear estudiante
+description: ""
+method: POST
+body:
+  mimeType: application/graphql
+  text: '{"query":"mutation {\n\tcreateStudent(\n\t\tstudent: {\n\t\t\tfirstName:
+    \"Jorge1\"\n\t\t\tmiddleName: \"Perez\"\n\t\t\tlastName:
+    \"García\"\n\t\t\tbirthDate: \"2000-01-20\"\n\t\t\tadress: \"C/ bosc num.
+    989\"\n\t\t\tphone: \"933874853\"\n\t\t\tmobile:
+    \"6514532621\"\n\t\t\temail: \"mperez@gmail.com\"\n\t\t\temailStudent:
+    \"maria.perez@colegio.gmail.com\"\n\t\t\tcip:
+    \"AHJD8971231\"\n\t\t\tadmissionDate: \"2003-05-01\"\n\t\t}\n\t) {idstudent,
+    firstname}\n}\n"}'
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_dd4bea11d23b4f04b8d11276b906767c
+authentication: {}
+metaSortKey: -1655653211779
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
